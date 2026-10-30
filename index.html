@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101214" />
+  <title>nighttype — find your flow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="nighttype home"><span class="brand-mark">n</span><span>nighttype</span></a>
+    </header>
+
+    <section class="test-card" id="testCard" aria-label="Typing test">
+      <div class="test-toolbar">
+        <div class="mode"><span class="mode-dot"></span> WORDS <span class="divider">/</span> <span>30 SEC</span></div>
+        <div class="timer-wrap"><span class="timer-label">TIME</span><span class="timer" id="timer">30</span></div>
+        <button class="restart" id="restart" aria-label="Restart test (Tab + Enter)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5m10-2a7 7 0 0 0-12-3L4 12m16 0-3 5a7 7 0 0 1-12-3"/></svg>
+          <span>restart</span><kbd>↵</kbd>
+        </button>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progress"></div></div>
+      <div class="word-area" id="wordArea" tabindex="0" role="textbox" aria-label="Typing passage. Start typing to begin.">
+        <div class="words" id="words"></div>
+        <div class="caret" id="caret" aria-hidden="true"></div>
+        <div class="start-hint" id="startHint"><span class="keycap">start typing</span><span class="hint-line"></span></div>
+      </div>
+      <input id="typingInput" class="typing-input" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Type the words shown above" />
+      <div class="test-footer"><span id="testStatus" aria-label="ready"><span class="status-dot"></span></span><span class="footer-right">tab <span class="muted">+</span> enter to restart</span></div>
+    </section>
+
+    <section class="results" id="results" aria-live="polite" hidden>
+      <div class="results-heading"><div><p class="eyebrow">THAT WAS YOUR MOMENT</p><h2>Nicely done<span class="period">.</span></h2></div><button class="again-button" id="tryAgain">Try again <span>↗</span></button></div>
+      <div class="result-grid">
+        <div class="result-main"><span class="metric-label">WORDS PER MINUTE</span><div class="big-number" id="resultWpm">0<span> wpm</span></div><div class="chart-wrap"><div class="chart-labels"><span>speed over time</span><span>30 sec</span></div><svg id="speedChart" viewBox="0 0 600 150" preserveAspectRatio="none" role="img" aria-label="Words per minute over time"><defs><linearGradient id="areaFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#9be8d0" stop-opacity=".2"/><stop offset="100%" stop-color="#9be8d0" stop-opacity="0"/></linearGradient></defs><path class="chart-area" id="chartArea" d=""/><path class="chart-line" id="chartLine" d=""/><g id="chartPoints"></g></svg></div></div>
+        <div class="result-side"><div class="mini-metric"><span class="metric-label">ACCURACY</span><strong id="resultAccuracy">0%</strong><span class="metric-note">of your keystrokes</span></div><div class="mini-metric"><span class="metric-label">CONSISTENCY</span><strong id="resultConsistency">0%</strong><span class="metric-note">steady hands, steady pace</span></div><div class="mini-metric"><span class="metric-label">BACKSPACES</span><strong id="resultBackspaces">0</strong><span class="metric-note">every edit counts</span></div></div>
+      </div>
+      <p class="result-footnote" id="resultNote">A little more practice, a little more flow.</p>
+    </section>
+
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
